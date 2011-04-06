@@ -1,0 +1,7 @@
+<h1>Domains currently managed by The Team</h1>
+
+<table>
+<% for(var i=0; i<domains.length; i++) {%>
+   <tr><td><a href="/domain/<%= domains[i].domain.name %>"><%= domains[i].domain.name %></a></td><td><%= domains[i].domain.expires_at %></td></tr>
+<% } %>
+</table>

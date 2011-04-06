@@ -1,0 +1,7 @@
+<h1><%= title %></h1>
+
+<table>
+<% for(var i=0; i<records.length; i++) {%>
+   <tr><td><%= records[i].record.record_type %></td><td><%= records[i].record.content %></td><td><%= records[i].record.created_at %></td></tr>
+<% } %>
+</table>
