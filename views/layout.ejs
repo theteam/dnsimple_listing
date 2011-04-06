@@ -1,10 +1,32 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <%- body %>
-  </body>
+	<head>
+		<title>
+			<%= title %>
+		</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' type="text/css">
+	</head>
+	<body>
+		<div class="header">
+			<div class="wrapper">
+				<h1>Domain name management</h1>
+				<h2>Domains registered and maintained at <a href="http://dnsimple.com.com/">DNSimple</a></h2>
+			</div>
+		</div>
+		<div class="content">
+			<div class="wrapper">
+				<%- body %>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="wrapper">
+				<p>
+					These domains are managed not by the IT department, but by the development team at The Team.
+				</p>
+				<p>
+					If you need need a domain for a new project, pitch or proof of concept, please contact <a href="mailto:developers@theteam.co.uk">The Developers</a>.
+				</p>
+			</div>
+		</div>
+	</body>
 </html>

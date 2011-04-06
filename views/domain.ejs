@@ -1,7 +1,8 @@
-<h1><%= title %></h1>
+<h2><%= title %></h2>
 
 <table>
+	<tr><th>Name</th><th>Record type</th><th>Address</th><th>Expires</th></tr>
 <% for(var i=0; i<records.length; i++) {%>
-   <tr><td><%= records[i].record.record_type %></td><td><%= records[i].record.content %></td><td><%= records[i].record.created_at %></td></tr>
+   <tr><td><a href="http://<%= records[i].record.name %>.<%= title %>"><%= records[i].record.name %>.<%= title %></a></td><td><%= records[i].record.record_type %></td><td><a href="/ip/<%= records[i].record.content %>"><%= records[i].record.content %></a></td><td><%= records[i].record.created_at %></td></tr>
 <% } %>
 </table>

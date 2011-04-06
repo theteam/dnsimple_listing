@@ -35,7 +35,10 @@ function() {
     app.use(express.errorHandler());
 });
 
+
 // Routes
+
+// Root - list domains.
 app.get('/',
 function(req, res) {
     
@@ -59,6 +62,7 @@ function(req, res) {
 });
 
 
+// domain details.
 app.get('/domain/:d',
 function(req, res) {
     
