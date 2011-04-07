@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-require.paths.unshift('.')
+require.paths.unshift('.');
 
 var express = require('express');
 var https = require('https');
@@ -41,23 +41,11 @@ function() {
 // Root - list domains.
 app.get('/',
 function(req, res) {
-    
-    https.get({
-        host: 'dnsimple.com',
-        path: '/domains/?format=json',
-        headers: {'Authorization': 'Basic ' + auth.hash}
-    }, 
-    function(r) {
-        r.on('data', function(d) {            
-            var domains = JSON.parse(d.toString());
-            res.render('index', {
-                title: 'domains',
-                domains: domains
-            });
+    app.getData('/domains/?format=json', function(d){
+        res.render('index', {
+            title: 'domains',
+            domains: d
         });
-    }).on('error',
-    function(e) {
-        console.error(e);
     });
 });
 
@@ -65,27 +53,38 @@ function(req, res) {
 // domain details.
 app.get('/domain/:d',
 function(req, res) {
-    
+    app.getData('/domains/'+ req.params.d  +'/records/?format=json', function(d){
+        res.render('domain', {
+            title: req.params.d,
+            records: d
+        });
+    });
+});
+
+
+// Go and make an authenticated request for data from DNSimple
+app.getData = function(path, callback) {  
     https.get({
         host: 'dnsimple.com',
-        path: '/domains/'+ req.params.d  +'/records/?format=json',
+        path: path,
         headers: {'Authorization': 'Basic ' + auth.hash}
     }, 
     function(r) {
         r.on('data', function(d) {            
-            var records = JSON.parse(d.toString());
-            
-            console.log("DOMAIN:", records);
-            
-            res.render('domain', {
-                title: req.params.d,
-                records: records
-            });
+            var data = JSON.parse(d.toString());            
+            callback(data);
         });
     }).on('error',
     function(e) {
         console.error(e);
-    });
+    });  
+};
+
+
+// all entries for a given IP address
+app.get('/ip/:ip',
+function(req, res) {
+    
 });
 
 

@@ -9,6 +9,7 @@ body {
   background:#f3f3f3;
 }
 
+
 /*  type */
 a:link, a:visited {
   color: #00B7FF;
@@ -32,6 +33,7 @@ div.footer {
 /* table data */
 table {
     font-size:12px;
+    margin:0;
 }
 th {
     padding:3px 20px 5px;
@@ -52,7 +54,7 @@ td {
 
 /* structural page elements */
 div.wrapper {
-    width:800px;
+    width:900px;
     margin:0  auto;
     padding:20px 0;
     text-align:left;

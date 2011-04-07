@@ -1,6 +1,6 @@
 var creds = {};
 
-ccreds.username = ''; 
+creds.username = ''; 
 creds.password = '';                  
 
 exports.username = creds.username;
